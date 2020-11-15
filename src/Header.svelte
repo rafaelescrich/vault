@@ -51,6 +51,7 @@
         display: flex;
     }
 
+    nav a,
     nav button {
         width: 32px;
         height: 32px;
@@ -130,6 +131,8 @@
                     <use xlink:href="#icon-lock" />
                 </svg>
             </button>
+
+            <a href="https://siasky.net/AACJOu5-oSfCV3suwty187btkQyzFZIX9hy7UfZU0s_EEQ" target="_blank" rel="noopener" use:tooltip="{'User Guide'}">?</a>
         </nav>
     {/if}
 </header>
