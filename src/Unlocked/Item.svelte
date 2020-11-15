@@ -117,13 +117,13 @@
     }
 
     blockquote {
-        top: 15px;
+        top: 0;
         right: 15px;
         position: absolute;
 
         color: var(--color-page-background);
-        font-size: 50px;
-        line-height: 40px;
+        font-size: 30px;
+        line-height: 44px;
         font-weight: bold;
         text-transform: uppercase;
 
