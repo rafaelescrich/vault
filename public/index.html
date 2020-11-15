@@ -40,5 +40,9 @@
         </div>
 
     	<script defer src="bundle.js"></script>
+
+    	<script>
+            ('serviceWorker' in navigator) && navigator.serviceWorker.register('sw.js');
+        </script>
     </body>
 </html>
