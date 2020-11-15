@@ -1,22 +1,19 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/sergejmueller/vault/master/vault.png" width="128" height="128" alt="VAULT">
-    <br>
-    <br>
     <b>VAULT</b>
     <br>
     Password Manager for the Decentralized Web
+    <br>
+    [Skynet](https://siasky.net) ÐApp (decentralized application) for secure storing and managing credentials
 </p>
 
-[Skynet](https://siasky.net) ÐApp (decentralized application) for secure storing and managing credentials. With a focus on privacy and security.
-
-* [VAULT ÐApp](https://siasky.net/_AV9yD5KdIfldIUprLQG9C303wKhEHU_tP6iKrYDzSp7GQ/)
-* VAULT Demo Video (coming soon)
-* VAULT on Skynet App Store (coming soon)
+* [VAULT ÐApp](https://siasky.net/_AXPtfsk-0pN8arfLDC9aO4rJzYzhR82UA-u13JT3cEhFg/)
+* [VAULT Demo Video](https://siasky.net/_AnpmkU8-A5HT29gqV-5gXxISBY--J_xWDxgxZRpLD1ZrQ)
+* [VAULT on Skynet App Store](https://siasky.net/hns/skyapps/#/apps/utilities)
 
 ### Features
 
 #### General
-* [SkyDB](https://blog.sia.tech/skydb-a-mutable-database-for-the-decentralized-web-7170beeaa985) usage
+* [SkyDB](https://blog.sia.tech/skydb-a-mutable-database-for-the-decentralized-web-7170beeaa985) based
 * Hand drafted frontend
 * Lightweight application
 * Optimized app performance
@@ -27,18 +24,18 @@
 
 #### Functions
 * Instant search
-* Filtering by topic
-* Random seed phrase suggestions
+* Filtering by topic/hashtag
+* Random seed phrase suggestion
 * Random password generator
 * Password strength indicator
 * Copy credentials to clipboard
 * Alphabetical grouping of items
 * Items management (add, update, remove)
-* `Secret` field for e.g. 2FA recovery codes
+* Secret field for e.g. 2FA recovery codes
 
 #### Layout
 * Full responsive layout
 * Minimalistic user interface
 * Progressive Web App
 * Dark/Light themes (auto switch)
-* Logo as publishing indicator
+* Page logo as Skynet update indicator
