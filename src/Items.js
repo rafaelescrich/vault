@@ -2,7 +2,7 @@ import { SkynetClient, genKeyPairFromSeed } from "skynet-js";
 import { encrypt, decrypt } from './Crypto';
 
 const client = new SkynetClient('https://siasky.net');
-const dataKey = "vault-1.0.0.json";
+const dataKey = "vault-v1.json";
 
 export const getItems = async (seed) => {
     try {
