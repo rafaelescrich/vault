@@ -3,7 +3,7 @@
     <br>
     Password Manager for the Decentralized Web
     <br>
-    [Skynet](https://siasky.net) ÐApp (decentralized application) for secure storing and managing credentials
+    Skynet ÐApp (decentralized application) for secure storing and managing credentials
 </p>
 
 * [VAULT ÐApp](https://siasky.net/_AXPtfsk-0pN8arfLDC9aO4rJzYzhR82UA-u13JT3cEhFg/)
