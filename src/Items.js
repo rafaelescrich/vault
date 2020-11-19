@@ -1,13 +1,26 @@
 import { SkynetClient, genKeyPairFromSeed } from "skynet-js";
 import { encrypt, decrypt } from './Crypto';
+import { SKYNET_URL, APP_VERSION } from './Constants';
 
-const client = new SkynetClient('https://siasky.net');
-const dataKey = "vault-v1.json";
+const client = new SkynetClient(SKYNET_URL);
+const dataKey = `${APP_VERSION}.json`;
 
 export const getItems = async (seed) => {
+    const keyPair = genKeyPairFromSeed(seed);
+    const publicKey = keyPair.publicKey;
+    const cacheKey = `${APP_VERSION}-${publicKey}`;
+
     try {
-        const publicKey = genKeyPairFromSeed(seed).publicKey;
-        const { data } = await client.db.getJSON(publicKey, dataKey);
+        let data = localStorage.getItem(cacheKey);
+
+        if (!data) {
+            const publicKey = genKeyPairFromSeed(seed).publicKey;
+            const response = await client.db.getJSON(publicKey, dataKey);
+
+            localStorage.setItem(cacheKey, response.data);
+            data = response.data;
+        }
+
         const decryptedData = await decrypt(data, seed);
 
         return JSON.parse(decryptedData);
@@ -17,27 +30,31 @@ export const getItems = async (seed) => {
 };
 
 export const publishItems = async (items, seed) => {
-    publishStatus('init');
+    updateStatus('init');
+
+    const keyPair = genKeyPairFromSeed(seed);
+    const publicKey = keyPair.publicKey;
+    const privateKey = keyPair.privateKey;
+    const cacheKey = `${APP_VERSION}-${publicKey}`;
 
     try {
         const encryptedData = await encrypt(JSON.stringify(items), seed);
-        const privateKey = genKeyPairFromSeed(seed).privateKey;
-
         const response = await client.db.setJSON(privateKey, dataKey, encryptedData);
 
         if (response) {
             console.log('setJSON response', response);
-            publishStatus('error');
+            updateStatus('error');
         } else {
-            publishStatus('finish');
+            localStorage.setItem(cacheKey, encryptedData);
+            updateStatus('finish');
         }
     } catch (error) {
         console.log('setJSON error', error);
-        publishStatus('error');
+        updateStatus('error');
     }
 };
 
-const publishStatus = status => {
+const updateStatus = status => {
     document.body.setAttribute('data-publish', status);
 
     if (['error', 'finish'].includes(status)) {

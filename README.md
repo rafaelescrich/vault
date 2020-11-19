@@ -6,7 +6,7 @@
     Skynet ÐApp (decentralized application) for secure storing and managing credentials
 </p>
 
-* [VAULT ÐApp](https://siasky.net/_AXPtfsk-0pN8arfLDC9aO4rJzYzhR82UA-u13JT3cEhFg/)
+* [VAULT ÐApp](https://siasky.net/_AVBGXqfMigWqHUBT3BLttnGYDUjLpXcpyvjJy7H9f8dmw/)
 * [VAULT Demo Video](https://siasky.net/_AnpmkU8-A5HT29gqV-5gXxISBY--J_xWDxgxZRpLD1ZrQ)
 * [VAULT on Skynet App Store](https://siasky.net/hns/skyapps/#/apps/utilities)
 
