@@ -6,7 +6,7 @@
     Skynet ÐApp (decentralized application) for secure storing and managing credentials
 </p>
 
-* [VAULT ÐApp](https://siasky.net/_AVBGXqfMigWqHUBT3BLttnGYDUjLpXcpyvjJy7H9f8dmw/)
+* [VAULT ÐApp](https://siasky.net/_AVFMZ_IMPqNUKcQgqa4XmXC3kT9qO8ElSJHlNaClcUiGg/)
 * [VAULT Demo Video](https://siasky.net/_AnpmkU8-A5HT29gqV-5gXxISBY--J_xWDxgxZRpLD1ZrQ)
 * [VAULT on Skynet App Store](https://siasky.net/hns/skyapps/#/apps/utilities)
 
@@ -21,6 +21,8 @@
 #### Security
 * AES-CBC encrypt
 * Auto lock after 10 minutes of inactivity
+* Seed Phrase need to be at least 17 characters
+* Auto login user using [navigator.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/credentials) (Chromium)
 
 #### Functions
 * Instant search
