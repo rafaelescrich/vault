@@ -1,6 +1,7 @@
 {
-    "name": "VAULT",
-    "version": "1.1.0",
+    "name": "vault",
+    "description": "VAULT - Password Manager for the Decentralized Web",
+    "version": "1.2.0",
     "scripts": {
         "build": "rollup -c",
         "dev": "rollup -c -w",

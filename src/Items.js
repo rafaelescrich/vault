@@ -7,18 +7,18 @@ const dataKey = `${APP_VERSION}.json`;
 
 export const getItems = async (seed) => {
     const keyPair = genKeyPairFromSeed(seed);
-    const publicKey = keyPair.publicKey;
+    const { publicKey } = keyPair;
     const cacheKey = `${APP_VERSION}-${publicKey}`;
 
     try {
         let data = localStorage.getItem(cacheKey);
 
         if (!data) {
-            const publicKey = genKeyPairFromSeed(seed).publicKey;
             const response = await client.db.getJSON(publicKey, dataKey);
 
-            localStorage.setItem(cacheKey, response.data);
             data = response.data;
+
+            localStorage.setItem(cacheKey, data);
         }
 
         const decryptedData = await decrypt(data, seed);
@@ -33,8 +33,7 @@ export const publishItems = async (items, seed) => {
     updateStatus('init');
 
     const keyPair = genKeyPairFromSeed(seed);
-    const publicKey = keyPair.publicKey;
-    const privateKey = keyPair.privateKey;
+    const { publicKey, privateKey } = keyPair;
     const cacheKey = `${APP_VERSION}-${publicKey}`;
 
     try {

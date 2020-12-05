@@ -6,7 +6,25 @@
 
     let seedSuggestion = '';
 
-    const unlock = async event => dispatch('unlock', { seed: event.target.seed.value });
+    const unlock = async event => {
+        const seed = event.target.seed.value;
+
+        if (!seed) {
+            return;
+        }
+
+        dispatch('unlock', { seed });
+
+        if ('PasswordCredential' in window) {
+            await navigator.credentials.store(
+                new PasswordCredential({
+                     id: `${seed.substr(0, 7)}...${seed.substr(-7)}`,
+                     name: 'VAULT Seed Phrase',
+                     password: seed,
+                })
+            );
+        }
+    }
 
     const random = () => seedSuggestion = genKeyPairAndSeed().seed;
 </script>
@@ -71,7 +89,7 @@
     <br>
 
     <form on:submit|preventDefault={unlock}>
-        <input type="text" name="seed" placeholder="Your VAULT Seed Phrase" value="{seedSuggestion}" autocomplete="current-password" required>
+        <input type="text" name="seed" placeholder="Your VAULT Seed Phrase" value="{seedSuggestion}" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" minlength="17" required>
         <input type="submit" value="UNLOCK">
     </form>
 
