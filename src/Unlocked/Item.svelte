@@ -1,6 +1,6 @@
 <script>
     import { nanoid } from 'nanoid/non-secure';
-    import { tooltip, pwdStrength, copyToClipboard } from './../Helpers';
+    import { tooltip, pwdStrength, copyToClipboard } from '../Helpers';
     import { createEventDispatcher, onMount } from 'svelte';
 
     const dispatch = createEventDispatcher();
@@ -26,13 +26,14 @@
 
     $: hideInput = mode === 'view';
     $: hideLabel = mode !== 'view';
-    $: switchMode(mode);
 
     const switchMode = mode => {
         if (mode === 'edit') {
             fieldPwd.dispatchEvent(new Event('keyup'));
         }
     };
+
+    $: switchMode(mode);
 
     const cancel = () => {
         if (mode === 'new') {

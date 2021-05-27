@@ -1,9 +1,11 @@
 import { SkynetClient, genKeyPairFromSeed } from "skynet-js";
 import { encrypt, decrypt } from './Crypto';
 import { SKYNET_URL, APP_VERSION } from './Constants';
+import { Buffer } from 'buffer';
 
+window.Buffer = Buffer;
 const client = new SkynetClient(SKYNET_URL);
-const dataKey = `${APP_VERSION}.json`;
+const dataKey = APP_VERSION;
 
 export const getItems = async (seed) => {
     const keyPair = genKeyPairFromSeed(seed);
@@ -11,14 +13,14 @@ export const getItems = async (seed) => {
     const cacheKey = `${APP_VERSION}-${publicKey}`;
 
     try {
-        let data = localStorage.getItem(cacheKey);
+        let data = sessionStorage.getItem(cacheKey);
 
         if (!data) {
             const response = await client.db.getJSON(publicKey, dataKey);
 
-            data = response.data;
+            data = response.data.encryptedData;
 
-            localStorage.setItem(cacheKey, data);
+            sessionStorage.setItem(cacheKey, data);
         }
 
         const decryptedData = await decrypt(data, seed);
@@ -36,15 +38,16 @@ export const publishItems = async (items, seed) => {
     const { publicKey, privateKey } = keyPair;
     const cacheKey = `${APP_VERSION}-${publicKey}`;
 
+    const encryptedData = await encrypt(JSON.stringify(items), seed);
+
     try {
-        const encryptedData = await encrypt(JSON.stringify(items), seed);
-        const response = await client.db.setJSON(privateKey, dataKey, encryptedData);
+        const response = await client.db.setJSON(privateKey, dataKey, { encryptedData });
 
         if (response) {
             console.log('setJSON response', response);
             updateStatus('error');
         } else {
-            localStorage.setItem(cacheKey, encryptedData);
+            sessionStorage.setItem(cacheKey, encryptedData);
             updateStatus('finish');
         }
     } catch (error) {

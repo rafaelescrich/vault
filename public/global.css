@@ -217,19 +217,33 @@ input:required {
     display: none !important;
 }
 
-#icon-vault-animation {
+#icon-vault-background {
     fill: var(--color-blue);
 
     transition: fill 250ms;
     will-change: fill;
 }
 
-[data-publish="init"] #icon-vault-animation {
+[data-publish="init"] #icon-vault-background {
     fill: var(--color-orange);
 }
-[data-publish="finish"] #icon-vault-animation {
+[data-publish="finish"] #icon-vault-background {
     fill: var(--color-green);
 }
-[data-publish="error"] #icon-vault-animation {
+[data-publish="error"] #icon-vault-background {
     fill: var(--color-red);
+}
+
+[data-publish="init"] #icon-vault-gear {
+    animation: orbit 2s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

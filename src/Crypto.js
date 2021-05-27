@@ -3,8 +3,9 @@ const decoder = new TextDecoder();
 
 const toBase64 = buffer => btoa(String.fromCharCode(...new Uint8Array(buffer)));
 const fromBase64 = buffer => Uint8Array.from(atob(buffer), c => c.charCodeAt(0));
+const defaultAlgorithm = 'AES-GCM';
 
-const PBKDF2 = async (phrase, salt, iterations, length, hash, algorithm =  'AES-CBC') => {
+const PBKDF2 = async (phrase, salt, iterations = 100000, length = 256, hash = 'SHA-256', algorithm = defaultAlgorithm) => {
     const keyMaterial = await window.crypto.subtle.importKey(
         'raw',
         encoder.encode(phrase),
@@ -31,10 +32,10 @@ export const encrypt = async (string, seed) => {
     const salt = window.crypto.getRandomValues(new Uint8Array(16));
     const iv = window.crypto.getRandomValues(new Uint8Array(16));
     const text = encoder.encode(string);
-    const key = await PBKDF2(seed, salt, 100000, 256, 'SHA-256');
+    const key = await PBKDF2(seed, salt);
 
     const encrypted = await window.crypto.subtle.encrypt(
-        {name: 'AES-CBC', iv },
+        { name: defaultAlgorithm, iv },
         key,
         text
     );
@@ -54,10 +55,10 @@ export const decrypt = async (string, seed) => {
 
     const salt = encrypted.slice(0, salt_len);
     const iv = encrypted.slice(salt_len, salt_len + iv_len);
-    const key = await PBKDF2(seed, salt, 100000, 256, 'SHA-256');
+    const key = await PBKDF2(seed, salt);
 
     const decrypted = await window.crypto.subtle.decrypt(
-        { name: 'AES-CBC', iv },
+        { name: defaultAlgorithm, iv },
         key,
         encrypted.slice(salt_len + iv_len)
     );
