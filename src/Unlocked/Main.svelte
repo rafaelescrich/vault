@@ -3,7 +3,7 @@
     import Empty from './Empty.svelte';
     import Topics from './Topics.svelte';
 
-    import { getItems, publishItems } from './../Items';
+    import { getItems, publishItems } from '../Items';
     import { createEventDispatcher, onMount } from 'svelte';
 
     const dispatch = createEventDispatcher();

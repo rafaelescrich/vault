@@ -3,26 +3,26 @@
     <br>
     Password Manager for the Decentralized Web
     <br>
-    Skynet ÐApp (decentralized application) for secure storing and managing credentials
+    ÐApp (decentralized application) for secure storing and managing credentials
 </p>
 
-* [VAULT ÐApp](https://vg2kaccvp0ofl3agks8859lobpis5ni4vmkeu14l493p9lk2in2i46g.siasky.net)
-* [VAULT Demo Video](https://siasky.net/AADPHG5OktG70qtZIi1S4fLGQpkWa9ftPqf7L-w8Uafb9w)
-* [VAULT on Skynet App Store](https://siasky.net/hns/skyapps/#/apps/utilities)
+* [VAULT ÐApp](https://fg3arcolv1qsnrjo6htno63qne2sqe570mqqmn3tfah9d71fmck3j8g.siasky.net)
 
 ### Features
 
 #### General
-* [SkyDB](https://blog.sia.tech/skydb-a-mutable-database-for-the-decentralized-web-7170beeaa985) based
+* Decentralized storage by [Sia](https://sia.tech), provided by [Skynet](https://siasky.net/)
+* Build on top of [SkyDB](https://blog.sia.tech/skydb-a-mutable-database-for-the-decentralized-web-7170beeaa985)
 * Hand drafted frontend
 * Lightweight application
 * Optimized app performance
 
 #### Security
-* AES-CBC encrypt
+* Open source
+* Strong [AES-GCM](https://en.wikipedia.org/wiki/Galois/Counter_Mode) encryption
 * Auto lock after 10 minutes of inactivity
 * Seed Phrase need to be at least 17 characters
-* Auto login user using [navigator.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/credentials) (Chromium)
+* Browser auto login using [navigator.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/credentials) (Chromium)
 
 #### Functions
 * Instant search
@@ -41,3 +41,6 @@
 * Progressive Web App
 * Dark/Light themes (auto switch)
 * Page logo as Skynet update indicator
+
+#### Remember
+Do not lose your seed. Without your seed you won't have access to your VAULT.

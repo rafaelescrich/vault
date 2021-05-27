@@ -75,6 +75,15 @@
         cursor: pointer;
         text-align: center;
     }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    a {
+        color: var(--color-page-text);
+        margin-left: 10px;
+    }
 </style>
 
 <main class="container">
@@ -93,7 +102,15 @@
         <input type="submit" value="UNLOCK">
     </form>
 
-    <button type="button" on:click="{random}">
-        <small>Need a Random Seed Phrase?</small>
-    </button>
+    <nav>
+        <button type="button" on:click="{random}">
+            <small>Strong Seed Phrase</small>
+        </button>
+        <a href="https://github.com/sergejmueller/vault" target="_blank" rel="noopener">
+            <small>Source Code</small>
+        </a>
+        <a href="https://siasky.net/AACJOu5-oSfCV3suwty187btkQyzFZIX9hy7UfZU0s_EEQ" target="_blank" rel="noopener">
+            <small>Help</small>
+        </a>
+    </nav>
 </main>
